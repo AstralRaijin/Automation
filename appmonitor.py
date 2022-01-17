@@ -15,45 +15,45 @@ full_link = link + bundle_id
 discord_hook = "https://discord.com/api/webhooks/915894181568851999/95WtOLHmUNE6DEfDJSSHa3flMn74hNwDCnraubUgvmjnuEp1rvafreMZNMqSV2L3DrHW"
 team_hook = "https://mediastep.webhook.office.com/webhookb2/029355ca-7144-4c6b-bffb-e56d3b684dfa@8b318df0-a908-4fa0-8c6c-8a521ce935e1/IncomingWebhook/1f2e84b11d6c47718a1a4f405666611d/58868632-f34e-4629-bb02-9ce320e5d8f1"
 current_time = datetime.datetime.now(pytz.timezone('Asia/Bangkok'))
-
+current_time_formatted = datetime.datetime.fromtimestamp(current_time).strftime('%Y-%m-%d %H:%M:%S')
                   
 def notification_email_online():
-    data = {"content": '{} is ONLINE - Uploaded to Play Store on {}. Link: {}'.format(app_name, current_time, full_link)}
+    data = {"content": '{} is ONLINE - Uploaded to Play Store on {}. Link: {}'.format(app_name, current_time_formatted, full_link)}
     response = requests.post(discord_hook, json = data)
     print('Discord Notification Sent: {}'.format(response))
     teams_notification = pymsteams.connectorcard(team_hook)
     teams_notification.color('03AAF9')
-    teams_notification.title('ONLINE - {} is now on Play Store. Uploaded on: {}'.format(app_name, current_time))
+    teams_notification.title('ONLINE - {} is now on Play Store. Uploaded on: {}'.format(app_name, current_time_formatted))
     teams_notification.text('Link: {}'.format(full_link))
     teams_notification.send()
     
 def notification_email_offline():
-    data = {"content": '{} is in REVIEW - Uploaded to Play Store on {}. Link: {}'.format(app_name, current_time, full_link)}
+    data = {"content": '{} is in REVIEW - Uploaded to Play Store on {}. Link: {}'.format(app_name, current_time_formatted, full_link)}
     response = requests.post(discord_hook, json = data)
     print('Discord Notification Sent: {}'.format(response))
     teams_notification = pymsteams.connectorcard(team_hook)
     teams_notification.color('DA420F')
-    teams_notification.title('OFFLINE - {} is in REVIEW. Uploaded on: {}'.format(app_name, current_time))
+    teams_notification.title('OFFLINE - {} is in REVIEW. Uploaded on: {}'.format(app_name, current_time_formatted))
     teams_notification.text('Link: {}'.format(full_link))
     teams_notification.send()
 
 def appname_reviewing():
-    data = {"content": 'APP_NAME REVEWING: Name of {} is in REVIEW .Submitted on {}. Link: {}'.format(app_name, current_time, full_link)}
+    data = {"content": 'APP_NAME REVEWING: Name of {} is in REVIEW .Submitted on {}. Link: {}'.format(app_name, current_time_formatted, full_link)}
     response = requests.post(discord_hook, json=data)
     print('Discord Notification Sent: {}'.format(response))
     teams_notification = pymsteams.connectorcard(team_hook)
     teams_notification.color('DA420F')
-    teams_notification.title('APP_NAME REVIEWING: Name of {} is in REVIEW. Submitted on: {}'.format(app_name, current_time))
+    teams_notification.title('APP_NAME REVIEWING: Name of {} is in REVIEW. Submitted on: {}'.format(app_name, current_time_formatted))
     teams_notification.text('Link: {}'.format(full_link))
     teams_notification.send()
 
 def appname_online():
-    data = {"content": 'APP_NAME ONLINE: Name of {} had been changed - Submitted on {}. Link: {}'.format(app_name, current_time, full_link)}
+    data = {"content": 'APP_NAME ONLINE: Name of {} had been changed - Submitted on {}. Link: {}'.format(app_name, current_time_formatted, full_link)}
     response = requests.post(discord_hook, json = data)
     print('Discord Notification Sent: {}'.format(response))
     teams_notification = pymsteams.connectorcard(team_hook)
     teams_notification.color('03AAF9')
-    teams_notification.title('APP_NAME ONLINE: Name of {} had been changed. Submitted on: {}'.format(app_name, current_time))
+    teams_notification.title('APP_NAME ONLINE: Name of {} had been changed. Submitted on: {}'.format(app_name, current_time_formatted))
     teams_notification.text('Link: {}'.format(full_link))
     teams_notification.send()
     
