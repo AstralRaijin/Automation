@@ -8,7 +8,7 @@ new_appname = input("Enter new app_name: ")
 bundle_id = input("Which bundle_id?: ")
 link = 'https://play.google.com/store/apps/details?id='
 app_link = link + bundle_id
-discord_hook = "https://discord.com/api/webhooks/915894181568851999/95WtOLHmUNE6DEfDJSSHa3flMn74hNwDCnraubUgvmjnuEp1rvafreMZNMqSV2L3DrHW"
+discord_hook = "https://discord.com/api/webhooks/933276671904198676/iqZ2wVpoztNckBMgN4w4jaJFIxQFzGwX-zM7lF9IdQf-wgGUP33R-OCYhd3SwiJ65T5g"
 team_hook = "https://mediastep.webhook.office.com/webhookb2/029355ca-7144-4c6b-bffb-e56d3b684dfa@8b318df0-a908-4fa0-8c6c-8a521ce935e1/IncomingWebhook/1f2e84b11d6c47718a1a4f405666611d/58868632-f34e-4629-bb02-9ce320e5d8f1"
 current_time = datetime.datetime.now(pytz.timezone('Asia/Bangkok'))
                   
